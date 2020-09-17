@@ -26,3 +26,29 @@ function App() {
   const [prevPageUrl, setPrevPageUrl] = useState()
   const [loading, setLoading] = useState(true)
 
+
+  return () => cancel()
+}, [currentPageUrl])
+
+  if (loading) return "Loading..."
+
+  function gotoNextPage() {
+    setCurrentPageUrl(nextPageUrl)
+  }
+
+  function gotoPrevPage() {
+    setCurrentPageUrl(prevPageUrl)
+  }
+
+  return (
+    <div>
+      <Searchbar planet={planet}/> 
+      <Starwars planet={planet}/>
+      <Pagination
+      gotoNextPage={nextPageUrl ? gotoNextPage : null}
+      gotoPrevPage={prevPageUrl ? gotoPrevPage : null}/>
+    </div>
+  );
+}
+
+export default App;
