@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import RocketList from './components/RocketList'
 import axios from 'axios'
 import './App.css';
 
 
 function App() {
-  const [spacexData, setSpacexData] = useState([]);
-  const [nextUrl, setNextUrl] = useState();
-  const [prevUrl, setPrevUrl] = useState();
-  const [loading, setLoading] = useState(true);
-  const [currentPageUrl, setCurrentPageUrl] = 'https://api.spacexdata.com/v3/rockets'
+  const [rocket, setRocket] = useState([]);
 
   useEffect(() =>  {
-    axios.get(currentPageUrl).then(res => {
-      setSpacexData(res.data.results.map(p => p.name))
+    axios.get('https://api.spacexdata.com/v3/rockets').then(res => {
+      setRocket(res.data.results.map(p => p.rocket_name))
     })
-    }, [])
+  }, [])
 
    return (
     <div>
+      <RocketList rocket={rocket} />
     </div>
   );
 }
