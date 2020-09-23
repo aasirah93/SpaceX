@@ -28,7 +28,7 @@ function App() {
      <div>
        Hello World!
        <ul>
-       {items && items.map(item => <li key = {item.id}>{item.description}</li> )}
+       {items && items.map(item => <li key = {item.id}>{item.rocket_name}: {item.description}</li>)}
        </ul>
        
      </div>
