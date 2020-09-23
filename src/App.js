@@ -1,24 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import RocketList from './components/RocketList'
-import axios from 'axios'
-import './App.css';
-
 
 function App() {
-  const [rocket, setRocket] = useState([]);
+  const [items, setItems] = useState([]);
+  const fetchData = () => {fetch("https://api.spacexdata.com/v3/rockets")
+  .then(res => res.json())
+  .then(
+    (result) => {
+      
+      setItems(result);
+     
+    },
+    // Note: it's important to handle errors here
+    // instead of a catch() block so that we don't swallow
+    // exceptions from actual bugs in components.
+    
+  )}
 
-  useEffect(() =>  {
-    axios.get('https://api.spacexdata.com/v3/rockets').then(res => {
-      setRocket(res.data.results.map(p => p.rocket_name))
-    })
+  // Note: the empty deps array [] means
+  // this useEffect will run once
+  // similar to componentDidMount()
+  useEffect(() => {
+    fetchData()
   }, [])
-
+  console.log(items)
+  
    return (
-    <div>
-      <RocketList rocket={rocket} />
-    </div>
-  );
+     <div>
+       Hello World!
+       <ul>
+       {items && items.map(item => <li key = {item.id}>{item.description}</li> )}
+       </ul>
+       
+     </div>
+     )
 }
-
 export default App;
 
