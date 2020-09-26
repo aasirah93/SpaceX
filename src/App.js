@@ -28,11 +28,17 @@ function App() {
    return (
      <div>
        Hello World!
-       <img src={("https://www.universetoday.com/wp-content/uploads/2009/01/falcon9_vertical003.jpg")}/>
+  
        <ul>
-       {items && items.map(item => <li key = {item.id}>{item.rocket_name}: 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       {item.description}</li>)}
+       {items && items.map(item => (
+       <li key = {item.id}><h1> {item.rocket_name}</h1>:
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+       {item.description}
+       <img src={item.flickr_images}/>
+       <a href={item.id}> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+       {item.wikipedia}</a>
+       </li>
+       ))}
        </ul>
        </div>
      )
