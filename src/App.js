@@ -31,11 +31,11 @@ function App() {
   
        <ul>
        {items && items.map(item => (
-       <li key = {item.id}><h1> {item.rocket_name}</h1>:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-       {item.description}
-       <img src={item.flickr_images}/>
-       <a href={item.id}> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+       <li key = {item.id}><h1> {item.rocket_name}</h1>
+       <p>{item.description}</p>
+       <img src={item.flickr_images} alt="Rockets" width="500" height="600"/>
+       <a href={item.id}> 
+       &nbsp;&nbsp;
        {item.wikipedia}</a>
        </li>
        ))}
