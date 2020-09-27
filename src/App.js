@@ -27,16 +27,15 @@ function App() {
   
    return (
      <div>
-       Hello World!
-  
        <ul>
        {items && items.map(item => (
        <li key = {item.id}><h1> {item.rocket_name}</h1>
-       <p>{item.description}</p>
-       <img src={item.flickr_images} alt="Rockets" width="500" height="600"/>
-       <a href={item.id}> 
+       <p><a href={item.id}> 
        &nbsp;&nbsp;
        {item.wikipedia}</a>
+       </p>
+       <p>{item.description}</p>
+       <img src={item.flickr_images} alt="Rockets" width="500" height="600"/>
        </li>
        ))}
        </ul>
