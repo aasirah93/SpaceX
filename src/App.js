@@ -29,8 +29,10 @@ function App() {
      <div>
        <ul>
        {items && items.map(item => (
-       <li key = {item.id}><h1> {item.rocket_name}</h1>
-       <p><a href={item.id}> 
+       <li key = {item.id}>
+       <h1> {item.rocket_name}</h1>
+       <p>
+       <a href={item.id}> 
        &nbsp;&nbsp;
        {item.wikipedia}</a>
        </p>

@@ -12,7 +12,7 @@ global.fetch = jest.fn(() => Promise.resolve({
 describe("App", () => {
   it("loads the rocket on mount", async () => {
    await act(async () => render(<App/>));
-   expect(screen.getByText("rocket_name")).toBeInTheDocument();
+   expect(screen.getByText("item.rocket_name")).toBeInTheDocument();
   })
 
 })
