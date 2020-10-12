@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 
 
 function App() {
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const fetchData = () => {fetch("https://api.spacexdata.com/v3/rockets")
   .then(res => res.json())
   .then(
     (result) => {
       
       setItems(result);
+      setIsLoading(false);
      
     },
     // Note: it's important to handle errors here
@@ -26,8 +29,11 @@ function App() {
   console.log(items)
   
    return (
+
+     isLoading?  (<h1>Loading...</h1>)  :
+     
      <div>
-       <ul>
+       <ul className = 'cards'>
        {items && items.map(item => (
        <li key = {item.id}>
        <h1> {item.rocket_name}</h1>
